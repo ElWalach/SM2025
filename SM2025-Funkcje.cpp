@@ -6,6 +6,7 @@
 #include "SM2025-Pliki.h"
 #include "SM2025-kolory.h"
 #include "SM2025-ByteRun.h"
+#include "SM2025-RLE.h"
 
 #define SUBW(sw) (((sw) + 1) / 2)
 #define SUBH(sh) (((sh) + 1) / 2)
@@ -22,24 +23,24 @@ void Funkcja1() {
 
     int nieskompresowane[]=
         {
-            0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 8, 8, 8, 8, 8, 8, 2, 2, 1, 3
+            0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 7, 7, 7, 8, 8, 8, 8, 8, 8, 2, 2, 1, 3, 1, 2
         };
 
-        int dlugosc= 24;
+        int dlugosc= 25;
 
         cout<<"wejscie: "<<endl;
         for (int c= 0; c< dlugosc; c++) cout<<(int)nieskompresowane[c]<<", ";
         cout<<"\n";
 
-        cout<<"skompresowane wyjscie (ByteRun): "<<endl;
-        ByteRunKompresja(nieskompresowane, dlugosc, "kompresjaByteRun.txt");
+        cout<<"skompresowane wyjscie (RLE): "<<endl;
+        RLEKompresja(nieskompresowane, dlugosc, "kompresjaRLE.bin");
         cout<<"\n";
     SDL_UpdateWindowSurface(window);
 }
 
 void Funkcja2() {
 
-    ByteRunDekompresja("kompresjaByteRun.txt");
+    RLEDekompresja("kompresjaRLE.bin");
 
     SDL_UpdateWindowSurface(window);
 }
