@@ -8,6 +8,8 @@
 #include <string.h>
 #include <SDL2/SDL.h>
 
+#include "SM2025-Funkcje.h"
+
 void Funkcja1();
 void Funkcja2();
 void Funkcja3();
@@ -66,8 +68,10 @@ static inline int paeth_predictor(int a, int b, int c);
 void KodF4Paeth(const uint8_t *raw, uint8_t *out, int width, int height, int bpp);
 void DekodF4Paeth(const uint8_t *in, uint8_t *out, int width, int height, int bpp);
 
+//Byterun
 
 
+void ByteRunKompresja(int wejscie[], int dlugosc);
 
 
 

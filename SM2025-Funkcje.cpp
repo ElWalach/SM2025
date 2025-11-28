@@ -5,6 +5,7 @@
 #include "SM2025-MedianCut.h"
 #include "SM2025-Pliki.h"
 #include "SM2025-kolory.h"
+#include "SM2025-ByteRun.h"
 
 #define SUBW(sw) (((sw) + 1) / 2)
 #define SUBH(sh) (((sh) + 1) / 2)
@@ -19,10 +20,20 @@ static const int bayer4x4[4][4] = {
 
 void Funkcja1() {
 
-    //narzucona();
-    //podprobkujYUV_420();
-    PokaFilter(1,2,2);
+    int nieskompresowane[]=
+        {
+            0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 8, 8, 8, 8, 8, 8, 2, 2, 1, 3
+        };
 
+        int dlugosc= 24;
+
+        cout<<"wejscie: "<<endl;
+        for (int c= 0; c< dlugosc; c++) cout<<(int)nieskompresowane[c]<<", ";
+        cout<<"\n";
+
+        cout<<"skompresowane wyjscie (ByteRun): "<<endl;
+        ByteRunKompresja(nieskompresowane, dlugosc);
+        cout<<"\n";
     SDL_UpdateWindowSurface(window);
 }
 
@@ -1207,4 +1218,5 @@ void DekodF4Paeth(const uint8_t *in, uint8_t *out, int width, int height, int bp
         }
     }
 }
+
 
