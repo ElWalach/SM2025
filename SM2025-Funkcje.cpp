@@ -32,16 +32,14 @@ void Funkcja1() {
         cout<<"\n";
 
         cout<<"skompresowane wyjscie (ByteRun): "<<endl;
-        ByteRunKompresja(nieskompresowane, dlugosc);
+        ByteRunKompresja(nieskompresowane, dlugosc, "kompresjaByteRun.txt");
         cout<<"\n";
     SDL_UpdateWindowSurface(window);
 }
 
 void Funkcja2() {
 
-    //NarzuconaS();
-    //podprobkujYIQ_420();
-    PokaFilter(2,2,2);
+    ByteRunDekompresja("kompresjaByteRun.txt");
 
     SDL_UpdateWindowSurface(window);
 }

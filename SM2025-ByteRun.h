@@ -6,6 +6,7 @@
 
 //ByteRun
 
-void ByteRunKompresja(int wejscie[], int dlugosc);
+void ByteRunKompresja(int wejscie[], int dlugosc, const char* plikWyjsciowy);
 
+void ByteRunDekompresja(const char* plikWejsciowy);
 #endif  //SM2025_BYTERUN_H_INCLUDED

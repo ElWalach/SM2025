@@ -49,6 +49,12 @@
 		<ExtraCommands>
 			<Add after="XCOPY .\SDL2\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
 		</ExtraCommands>
+		<Unit filename="SM2025-ByteRun.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="SM2025-ByteRun.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="SM2025-Funkcje.cpp" />
 		<Unit filename="SM2025-Funkcje.h" />
 		<Unit filename="SM2025-MedianCut.cpp" />
@@ -62,6 +68,7 @@
 		<Unit filename="SM2025-Zmienne.h" />
 		<Unit filename="SM2025-kolory.cpp" />
 		<Unit filename="SM2025-kolory.h" />
+		<Unit filename="kompresjaByteRun.txt" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -4366,7 +4366,7 @@
 1764333849 source:c:\users\leonw\desktop\sm2025\sm2025-zmienne.cpp
 	"SM2025-Zmienne.h"
 
-1764338538 source:c:\users\leonw\desktop\sm2025\sm2025-funkcje.cpp
+1764341781 source:c:\users\leonw\desktop\sm2025\sm2025-funkcje.cpp
 	"SM2025-Funkcje.h"
 	"SM2025-Zmienne.h"
 	"SM2025-Paleta.h"
@@ -4375,7 +4375,7 @@
 	"SM2025-kolory.h"
 	"SM2025-ByteRun.h"
 
-1764338871 c:\users\leonw\desktop\sm2025\sm2025-byterun.h
+1764342166 c:\users\leonw\desktop\sm2025\sm2025-byterun.h
 	<SDL2/SDL.h>
 	<iostream>
 
@@ -4384,8 +4384,10 @@
 	"SM2025-Funkcje.h"
 	<iostream>
 
-1764337339 source:c:\users\leonw\desktop\sm2025\sm2025-byterun.cpp
+1764342519 source:c:\users\leonw\desktop\sm2025\sm2025-byterun.cpp
 	"SM2025-ByteRun.h"
 	"SM2025-Funkcje.h"
 	<iostream>
+	<fstream>
+	<vector>
 
