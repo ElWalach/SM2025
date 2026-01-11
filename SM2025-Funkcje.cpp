@@ -8,6 +8,7 @@
 #include "SM2025-ByteRun.h"
 #include "SM2025-RLE.h"
 #include "SM2025-LZW.h"
+#include "SM2025-TransformataDCT.h"
 #define SUBW(sw) (((sw) + 1) / 2)
 #define SUBH(sh) (((sh) + 1) / 2)
 
@@ -19,29 +20,92 @@ static const int bayer4x4[4][4] = {
 };
 
 
+
 void Funkcja1() {
+    float kolor = 0;
+    for (int y = 0; y < rozmiarBloku; y++) {
+        for (int x = 0; x < rozmiarBloku; x++) {
+            setPixel(x + rozmiarBloku, y + rozmiarBloku, kolor, kolor, kolor);
+            kolor += 256.0 / (rozmiarBloku * rozmiarBloku);
+        }
+    }
 
-   int nieskompresowane[] = {
-        0,0,0,1,1,1,1,2,0,0,3,1,3,2,2,0,0,0,3,3,3,3,1,2,1,2,3,1,2,0,0,1,1,1,3,3
-    };
-    int dlugosc = 36;
-
-    cout << "wejscie: " << endl;
-    for (int c = 0; c < dlugosc; c++)
-        cout << (int)nieskompresowane[c] << ", ";
-    cout << "\n";
-
-    LZWKompresja(nieskompresowane, dlugosc);
+    for (int y = 1; y < rozmiarBloku; y += 2) {
+        for (int x = 1; x < rozmiarBloku; x += 2) {
+            setPixel(x + 3 * rozmiarBloku, y + rozmiarBloku, 255, 255, 255);
+            setPixel(x + 3 * rozmiarBloku - 1, y + rozmiarBloku - 1, 128, 128, 129);
+            setPixel(x + 3 * rozmiarBloku, y + rozmiarBloku - 1, 0, 0, 0);
+            setPixel(x + 3 * rozmiarBloku - 1, y + rozmiarBloku, 0, 0, 0);
+        }
+    }
     SDL_UpdateWindowSurface(window);
 }
 
 void Funkcja2() {
+    macierz blokDCT;
+    macierz blokDane;
+    macierz noweDane;
 
+    // Pierwszy blok
+    cout << "Pierwszy blok" << endl;
+    for (int y = 0; y < rozmiarBloku; y++) {
+        for (int x = 0; x < rozmiarBloku; x++) {
+            blokDane.dane[x][y] = getPixel(x + rozmiarBloku, y + rozmiarBloku).r;
+            blokDane.dct[x][y] = 0;
+        }
+    }
 
-    LZWDekompresja("kompresjaLZW.bin");
+    wyswietlDane(blokDane);
+    cout << endl;
+
+    blokDCT = dct(blokDane.dane);
+    blokDCT.dct[2][2] = 200; // modyfikujemy jeden ze współczynników
+    wyswietlDCT(blokDCT);
+    cout << endl;
+
+    noweDane = idct(blokDCT.dct);
+    wyswietlDane(noweDane);
+    cout << endl;
+
+    for (int y = 0; y < rozmiarBloku; y++) {
+        for (int x = 0; x < rozmiarBloku; x++) {
+            setPixel(x + rozmiarBloku, y + 3 * rozmiarBloku,
+                noweDane.dane[x][y], noweDane.dane[x][y], noweDane.dane[x][y]);
+        }
+    }
+
+    // Drugi blok
+    cout << "Drugi blok" << endl;
+    for (int y = 0; y < rozmiarBloku; y++) {
+        for (int x = 0; x < rozmiarBloku; x++) {
+            blokDane.dane[x][y] = getPixel(x + 3 * rozmiarBloku, y + rozmiarBloku).r;
+            blokDane.dct[x][y] = 0;
+        }
+    }
+
+    wyswietlDane(blokDane);
+    cout << endl;
+
+    blokDCT = dct(blokDane.dane);
+    blokDCT.dct[2][2] = 200; // modyfikujemy jeden ze współczynników
+    wyswietlDCT(blokDCT);
+    cout << endl;
+
+    noweDane = idct(blokDCT.dct);
+    wyswietlDane(noweDane);
+    cout << endl;
+
+    for (int y = 0; y < rozmiarBloku; y++) {
+        for (int x = 0; x < rozmiarBloku; x++) {
+            setPixel(x + 3 * rozmiarBloku, y + 3 * rozmiarBloku,
+                noweDane.dane[x][y], noweDane.dane[x][y], noweDane.dane[x][y]);
+        }
+    }
+
     SDL_UpdateWindowSurface(window);
-
 }
+
+
 
 void Funkcja3() {
 
