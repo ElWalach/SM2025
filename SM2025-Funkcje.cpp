@@ -7,7 +7,7 @@
 #include "SM2025-kolory.h"
 #include "SM2025-ByteRun.h"
 #include "SM2025-RLE.h"
-
+#include "SM2025-LZW.h"
 #define SUBW(sw) (((sw) + 1) / 2)
 #define SUBH(sh) (((sh) + 1) / 2)
 
@@ -21,37 +21,30 @@ static const int bayer4x4[4][4] = {
 
 void Funkcja1() {
 
-    int nieskompresowane[]=
-        {
-            0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 7, 7, 7, 8, 8, 8, 8, 8, 8, 2, 2, 1, 3, 1, 2
-        };
+   int nieskompresowane[] = {
+        0,0,0,1,1,1,1,2,0,0,3,1,3,2,2,0,0,0,3,3,3,3,1,2,1,2,3,1,2,0,0,1,1,1,3,3
+    };
+    int dlugosc = 36;
 
-        int dlugosc= 25;
+    cout << "wejscie: " << endl;
+    for (int c = 0; c < dlugosc; c++)
+        cout << (int)nieskompresowane[c] << ", ";
+    cout << "\n";
 
-        cout<<"wejscie: "<<endl;
-        for (int c= 0; c< dlugosc; c++) cout<<(int)nieskompresowane[c]<<", ";
-        cout<<"\n";
-
-        cout<<"skompresowane wyjscie (RLE): "<<endl;
-        RLEKompresja(nieskompresowane, dlugosc, "kompresjaRLE.bin");
-        cout<<"\n";
+    LZWKompresja(nieskompresowane, dlugosc);
     SDL_UpdateWindowSurface(window);
 }
 
 void Funkcja2() {
 
-    RLEDekompresja("kompresjaRLE.bin");
 
+    LZWDekompresja("kompresjaLZW.bin");
     SDL_UpdateWindowSurface(window);
+
 }
 
 void Funkcja3() {
 
-    //paletaWykryta();
-    //podprobkujYCbCr_420();
-    PokaFilter(3,2,2);
-
-    SDL_UpdateWindowSurface(window);
 }
 
 void Funkcja4() {

@@ -57,6 +57,8 @@
 		</Unit>
 		<Unit filename="SM2025-Funkcje.cpp" />
 		<Unit filename="SM2025-Funkcje.h" />
+		<Unit filename="SM2025-LZW.cpp" />
+		<Unit filename="SM2025-LZW.h" />
 		<Unit filename="SM2025-MedianCut.cpp" />
 		<Unit filename="SM2025-MedianCut.h" />
 		<Unit filename="SM2025-Paleta.cpp" />
@@ -64,11 +66,19 @@
 		<Unit filename="SM2025-Pliki.cpp" />
 		<Unit filename="SM2025-Pliki.h" />
 		<Unit filename="SM2025-Projekt.cpp" />
+		<Unit filename="SM2025-RLE.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="SM2025-RLE.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="SM2025-Zmienne.cpp" />
 		<Unit filename="SM2025-Zmienne.h" />
 		<Unit filename="SM2025-kolory.cpp" />
 		<Unit filename="SM2025-kolory.h" />
 		<Unit filename="kompresjaByteRun.txt" />
+		<Unit filename="kompresjaLWZ.bin" />
+		<Unit filename="kompresjaRLE.bin" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

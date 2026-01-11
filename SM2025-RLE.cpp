@@ -117,22 +117,22 @@ void RLEDekompresja(const char* plik)
 
    for (size_t i = 0; i < dane.size(); i++) {
         if (dane[i] > 128) {
-            // Nag³ówek ujemny (RLE - powtórzenia)
+
             int liczbaPowtorzen = 257 - dane[i];
             cout << "(" << liczbaPowtorzen << "), " << (int)dane[i+1] << ", ";
-            i++; // Pomiñ wartoœæ
+            i++;
         } else {
-            // Nag³ówek dodatni (litera³y)
+
             int liczba = dane[i] + 1;
             cout << "0, " << liczba << ", ";
             for (int j = 1; j <= liczba && (i + j) < dane.size(); j++) {
                 cout << (int)dane[i + j] << ", ";
             }
-            // SprawdŸ czy nieparzysta liczba litera³ów (dodatkowe 0)
+
             if (liczba % 2 != 0) {
                 cout << "0, ";
             }
-            i += liczba; // Pomiñ wszystkie litera³y
+            i += liczba;
         }
     }
 
