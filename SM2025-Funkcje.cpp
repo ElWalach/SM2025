@@ -23,6 +23,7 @@ static const int bayer4x4[4][4] = {
 
 void Funkcja1() {
     float kolor = 0;
+
     for (int y = 0; y < rozmiarBloku; y++) {
         for (int x = 0; x < rozmiarBloku; x++) {
             setPixel(x + rozmiarBloku, y + rozmiarBloku, kolor, kolor, kolor);
@@ -33,7 +34,7 @@ void Funkcja1() {
     for (int y = 1; y < rozmiarBloku; y += 2) {
         for (int x = 1; x < rozmiarBloku; x += 2) {
             setPixel(x + 3 * rozmiarBloku, y + rozmiarBloku, 255, 255, 255);
-            setPixel(x + 3 * rozmiarBloku - 1, y + rozmiarBloku - 1, 128, 128, 129);
+            setPixel(x + 3 * rozmiarBloku - 1, y + rozmiarBloku - 1, 128, 128, 128);
             setPixel(x + 3 * rozmiarBloku, y + rozmiarBloku - 1, 0, 0, 0);
             setPixel(x + 3 * rozmiarBloku - 1, y + rozmiarBloku, 0, 0, 0);
         }
@@ -46,7 +47,7 @@ void Funkcja2() {
     macierz blokDane;
     macierz noweDane;
 
-    // Pierwszy blok
+
     cout << "Pierwszy blok" << endl;
     for (int y = 0; y < rozmiarBloku; y++) {
         for (int x = 0; x < rozmiarBloku; x++) {
@@ -54,12 +55,11 @@ void Funkcja2() {
             blokDane.dct[x][y] = 0;
         }
     }
-
     wyswietlDane(blokDane);
     cout << endl;
 
     blokDCT = dct(blokDane.dane);
-    blokDCT.dct[2][2] = 200; // modyfikujemy jeden ze współczynników
+    blokDCT.dct[2][2] = 200;
     wyswietlDCT(blokDCT);
     cout << endl;
 
@@ -70,11 +70,10 @@ void Funkcja2() {
     for (int y = 0; y < rozmiarBloku; y++) {
         for (int x = 0; x < rozmiarBloku; x++) {
             setPixel(x + rozmiarBloku, y + 3 * rozmiarBloku,
-                noweDane.dane[x][y], noweDane.dane[x][y], noweDane.dane[x][y]);
+                     noweDane.dane[x][y], noweDane.dane[x][y], noweDane.dane[x][y]);
         }
     }
 
-    // Drugi blok
     cout << "Drugi blok" << endl;
     for (int y = 0; y < rozmiarBloku; y++) {
         for (int x = 0; x < rozmiarBloku; x++) {
@@ -82,12 +81,11 @@ void Funkcja2() {
             blokDane.dct[x][y] = 0;
         }
     }
-
     wyswietlDane(blokDane);
     cout << endl;
 
     blokDCT = dct(blokDane.dane);
-    blokDCT.dct[2][2] = 200; // modyfikujemy jeden ze współczynników
+    blokDCT.dct[2][2] = 200; // Modyfikacja jednego ze wspolczynnikow wg instrukcji
     wyswietlDCT(blokDCT);
     cout << endl;
 
@@ -98,32 +96,26 @@ void Funkcja2() {
     for (int y = 0; y < rozmiarBloku; y++) {
         for (int x = 0; x < rozmiarBloku; x++) {
             setPixel(x + 3 * rozmiarBloku, y + 3 * rozmiarBloku,
-                noweDane.dane[x][y], noweDane.dane[x][y], noweDane.dane[x][y]);
+                     noweDane.dane[x][y], noweDane.dane[x][y], noweDane.dane[x][y]);
         }
     }
 
     SDL_UpdateWindowSurface(window);
 }
 
-
-
 void Funkcja3() {
-
+    cout << "Rozpoczynam proces kompresji DCT (kroki 1-9)..." << endl;
+    wykonajKompresjeObrazu();
+    cout << "Kompresja zakonczona. Wynik widoczny po prawej stronie." << endl;
+    SDL_UpdateWindowSurface(window);
 }
 
 void Funkcja4() {
-
-    //paletaMedianCut();
-    //podprobkujHSL_L_420();
-    PokaFilter(1,3,1);
 
     SDL_UpdateWindowSurface(window);
 }
 
 void Funkcja5() {
-
-    //paletaMedianCutBW();
-    PokaFilter(4,3,1);
 
     SDL_UpdateWindowSurface(window);
 }

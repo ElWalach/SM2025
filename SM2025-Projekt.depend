@@ -4366,7 +4366,7 @@
 1764333849 source:c:\users\leonw\desktop\sm2025\sm2025-zmienne.cpp
 	"SM2025-Zmienne.h"
 
-1768140755 source:c:\users\leonw\desktop\sm2025\sm2025-funkcje.cpp
+1768428646 source:c:\users\leonw\desktop\sm2025\sm2025-funkcje.cpp
 	"SM2025-Funkcje.h"
 	"SM2025-Zmienne.h"
 	"SM2025-Paleta.h"
@@ -4376,6 +4376,7 @@
 	"SM2025-ByteRun.h"
 	"SM2025-RLE.h"
 	"SM2025-LZW.h"
+	"SM2025-TransformataDCT.h"
 
 1764342166 c:\users\leonw\desktop\sm2025\sm2025-byterun.h
 	<SDL2/SDL.h>
@@ -4414,4 +4415,14 @@
 1768140755 c:\users\leonw\desktop\sm2025\sm2025-lzw.h
 	<SDL2/SDL.h>
 	<iostream>
+
+1768428646 c:\users\leonw\desktop\sm2025\sm2025-transformatadct.h
+	<SDL2/SDL.h>
+	<iostream>
+	<iomanip>
+	<cmath>
+	<vector>
+
+1768425022 source:c:\users\leonw\desktop\sm2025\sm2025-transformatadct.cpp
+	"SM2025-TransformataDCT.h"
 

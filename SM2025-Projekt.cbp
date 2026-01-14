@@ -72,12 +72,14 @@
 		<Unit filename="SM2025-RLE.h">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="SM2025-TransformataDCT.cpp" />
+		<Unit filename="SM2025-TransformataDCT.h" />
 		<Unit filename="SM2025-Zmienne.cpp" />
 		<Unit filename="SM2025-Zmienne.h" />
 		<Unit filename="SM2025-kolory.cpp" />
 		<Unit filename="SM2025-kolory.h" />
 		<Unit filename="kompresjaByteRun.txt" />
-		<Unit filename="kompresjaLWZ.bin" />
+		<Unit filename="kompresjaLZW.bin" />
 		<Unit filename="kompresjaRLE.bin" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
